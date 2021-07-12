@@ -1,0 +1,25 @@
+version: "3.2"
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: app_server
+    restart: always
+    expose:
+      - 5000
+
+  nginx:
+    build: ./nginx
+    container_name: app_nginx
+    restart: always
+    ports:
+      - "5000:5000"  
+  
+  app-node-js:
+    build: ./app-node-js   
+    container_name: app_client
+    expose:
+      - 8000
+    ports:
+      - "8000:8000"
